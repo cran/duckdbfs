@@ -1,0 +1,16 @@
+c14abc13dcf09ba26057c6b6984cea4f *DESCRIPTION
+fcf115aa5029a37c172bf572245a5e91 *LICENSE
+6babf221a17cdb26d16ec459d55bb32c *NAMESPACE
+54bc84043d781004356c5cb8ae9fd1c0 *R/cached_connection.R
+d3cec77291ca90df4ecb98d1718847e4 *R/duckdb_config.R
+be0f29c2ce4c3107224c32286cd97219 *R/open_dataset.R
+b9b9db555cb0828e451c939e3e4c1ba4 *README.md
+492d8d03cc6560d263a4fa125d33a1a3 *inst/WORDLIST
+1b6aea4231c74cce457d0ab52c32305e *inst/examples/neon-read-remote-csv.R
+19059b2caac41f7112bd8aa3e173c586 *man/cached_connection.Rd
+bbf57ef4492f4862d61c42e7555a00d0 *man/close_connection.Rd
+c0fd5b5b0f18c010abeb49efc51af41f *man/duckdb_s3_config.Rd
+7d9d1f13c337e930dea7c7b8e5a1abd7 *man/open_dataset.Rd
+0622a97a2aaa3c342f09636052c2d7f5 *tests/spelling.R
+5d9a9628ab0c6d50c0fcbbb863fb14f6 *tests/testthat.R
+1893f8e58022a67d22ba3afbbd661341 *tests/testthat/test-open_dataset.R
