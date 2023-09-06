@@ -14,8 +14,8 @@ open_dataset(
   tblname = tmp_tbl_name(),
   mode = "VIEW",
   filename = FALSE,
-  endpoint = NULL,
-  threads = parallel::detectCores()
+  recursive = TRUE,
+  ...
 )
 }
 \arguments{
@@ -39,21 +39,31 @@ the initial execution time)}
 
 \item{tblname}{The name of the table to create in the database.}
 
-\item{mode}{The mode to create the table in. One of \code{"VIEW"} or \code{"TABLE"}.}
+\item{mode}{The mode to create the table in. One of \code{"VIEW"} or \code{"TABLE"}.
+Creating a \code{VIEW}, the default, will execute more quickly because it
+does not create a local copy of the dataset.  \code{TABLE} will create a local
+copy in duckdb's native format, downloading the full dataset if necessary.
+When using \code{TABLE} mode with large data, please be sure to use a \code{conn}
+connections with disk-based storage, e.g. by calling \code{\link[=cached_connection]{cached_connection()}},
+e.g. \code{cached_connection("storage_path")}, otherwise the full data must fit
+into RAM.  Using \code{TABLE} assumes familiarity with R's DBI-based interface.}
 
 \item{filename}{A logical value indicating whether to include the filename in
 the table name.}
 
-\item{endpoint}{optionally, an alternative endpoint for the S3 object store.}
+\item{recursive}{should we assume recursive path? default TRUE. Set to FALSE
+if trying to open a single, un-partitioned file.}
 
-\item{threads}{restrict number of available threads to duckdb}
+\item{...}{optional additional arguments passed to \code{\link[=duckdb_s3_config]{duckdb_s3_config()}}.
+Note these apply after those set by the URI notation and thus may be used
+to override or provide settings not supported in that format.}
 }
 \value{
 A lazy \code{dplyr::tbl} object representing the opened dataset backed
 by a duckdb SQL connection.  Most \code{dplyr} (and some \code{tidyr}) verbs can be
 used directly on this object, as they can be translated into SQL commands
 automatically via \code{dbplyr}.  Generic R commands require using
-\code{dplyr::collect()} on the table, which forces evaluation and reading the
+\code{\link[dplyr:compute]{dplyr::collect()}} on the table, which forces evaluation and reading the
 resulting data into memory.
 }
 \description{
@@ -63,13 +73,18 @@ notation.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Open a remote, hive-partitioned Parquet dataset
-base <- paste0("https://github.com/duckdb/duckdb/raw/master/",
+# A remote, hive-partitioned Parquet dataset
+base <- paste0("https://github.com/duckdb/duckdb/raw/main/",
              "data/parquet-testing/hive-partitioning/union_by_name/")
 f1 <- paste0(base, "x=1/f1.parquet")
 f2 <- paste0(base, "x=1/f2.parquet")
 f3 <- paste0(base, "x=2/f2.parquet")
 
-open_dataset(c(f1,f2,f3), unify_schemas = TRUE, threads=1)
+open_dataset(c(f1,f2,f3), unify_schemas = TRUE)
+
+# Access an S3 database specifying an independently-hosted (MINIO) endpoint
+efi <- open_dataset("s3://neon4cast-scores/parquet/aquatics",
+                    s3_access_key_id="",
+                    s3_endpoint="data.ecoforecast.org")
 \dontshow{\}) # examplesIf}
 }
