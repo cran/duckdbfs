@@ -1,14 +1,14 @@
-e067558726ce648c2503892dc9c95cb4 *DESCRIPTION
+ce1756ac19488c4fb954d9c173242d7d *DESCRIPTION
 fcf115aa5029a37c172bf572245a5e91 *LICENSE
 a7f9b16999a95714d375b7dd3df6c803 *NAMESPACE
-5e9ca1dca98073a1d679e9c052bb3ac2 *NEWS.md
+fb0d6ecae255e6fe5a67e4fb61b19fa7 *NEWS.md
 f0664df9e6122e85cfbf20f5968ef1ed *R/cached_connection.R
 7d6a3d18a926359295249a2cc0d93296 *R/duckdb_config.R
 0dcc4ef69ce47aeed408fb562b03f520 *R/open_dataset.R
 c323a450fdcdec8a8873174620a07c52 *R/parse_uri.R
 12a161e3ba344b54179b25d522bb18ad *R/to_sf.R
-1eb496038b00cb76181b558c2f5743fb *R/write_dataset.R
-4af6153cbb34996684edb56ae547e93f *README.md
+80af6f1187e674758c08ffcd6ae84f90 *R/write_dataset.R
+ead0651adf059ea89c09995cc163fd7e *README.md
 785f19be5d022780f37a530e528c803b *inst/WORDLIST
 d17e848caf8e63663230cd5fbc9f81ff *inst/examples/neon-read-remote-csv.R
 a951c545be5c9b90cc0169aa40e7af15 *inst/examples/s3-spatial.R
@@ -26,5 +26,5 @@ d26f5b7081df65a4073826a623bf4167 *man/write_dataset.Rd
 5d9a9628ab0c6d50c0fcbbb863fb14f6 *tests/testthat.R
 88cdc987cda704e8dbb67f2a07d80546 *tests/testthat/test-open_dataset.R
 bea2d6d29b39dd1b9e71a4fef250ca8a *tests/testthat/test-s3_uri.R
-56b8030a998e19f11eb37ce752b4b2f7 *tests/testthat/test-spatial.R
-781139c328163478fa24b0b7644f3d3a *tests/testthat/test-write_dataset.R
+4b05b161e6446759e4226b7b745d4741 *tests/testthat/test-spatial.R
+72e158186250434aa683b2a212d2b08e *tests/testthat/test-write_dataset.R
