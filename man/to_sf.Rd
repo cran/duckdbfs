@@ -4,10 +4,12 @@
 \alias{to_sf}
 \title{Convert output to sf object}
 \usage{
-to_sf(x, conn = cached_connection())
+to_sf(x, crs = NA, conn = cached_connection())
 }
 \arguments{
 \item{x}{a remote duckdb \code{tbl} (from \code{open_dataset}) or dplyr-pipeline thereof.}
+
+\item{crs}{The coordinate reference system, any format understood by \code{sf::st_crs}.}
 
 \item{conn}{the connection object from the tbl.
 Takes a duckdb table (from \code{open_dataset}) or a dataset or dplyr
@@ -36,15 +38,15 @@ csv_file <- system.file("extdata/spatial-test.csv", package="duckdbfs")
 # from lat/long columns using the `st_point` method.
 sf <-
   open_dataset(csv_file, format = "csv") |>
-  mutate(geometry = ST_Point(longitude, latitude)) |>
+  mutate(geom = ST_Point(longitude, latitude)) |>
   to_sf()
 
 # We can use the full space of spatial operations, including spatial
 # and normal dplyr filters.  All operations are translated into a
 # spatial SQL query by `to_sf`:
 open_dataset(csv_file, format = "csv") |>
-  mutate(geometry = ST_Point(longitude, latitude)) |>
-  mutate(dist = ST_Distance(geometry, ST_Point(0,0))) |>
+  mutate(geom = ST_Point(longitude, latitude)) |>
+  mutate(dist = ST_Distance(geom, ST_Point(0,0))) |>
   filter(site \%in\% c("a", "b", "e")) |>
   to_sf()
 
