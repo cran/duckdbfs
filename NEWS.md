@@ -1,3 +1,8 @@
+# duckdbfs 0.0.5
+
+* bugfix `write_dataset()` no longer adds `**` into paths when writing some partitions.
+* Protect from unsupported table names generated from file names that start with a digit, fixes #21. 
+
 # duckdbfs 0.0.4
 
 * `open_dataset()` gains the ability to read spatial vector data formats
