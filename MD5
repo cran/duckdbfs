@@ -1,9 +1,9 @@
-4df9648678823cec8720e98096de440e *DESCRIPTION
+58343988405719df754ec3d491e61b09 *DESCRIPTION
 fcf115aa5029a37c172bf572245a5e91 *LICENSE
 e585ae9fafdfa8944e0f42c490640003 *NAMESPACE
-e4ffcd0a89850a0c552c6ded92b1a27a *NEWS.md
+5ffff9b35211f277568cf87d0d3c71fa *NEWS.md
 625caa9271bee2b7a8385478f483323a *R/cached_connection.R
-adeba09ded90ae13077e237899580412 *R/duckdb_config.R
+1b4d5399facfb0ccc8eba732cefb001d *R/duckdb_config.R
 3d592a2f09931ed56fb777f83b795870 *R/open_dataset.R
 77b09dca3333cfd78d97922c029273c5 *R/parse_uri.R
 b5f4798fcdd51110fcaf1da686bc7ddc *R/spatial_join.R
@@ -30,7 +30,7 @@ bbf57ef4492f4862d61c42e7555a00d0 *man/close_connection.Rd
 61749e72a25a2e1360a8a11f42dc894b *man/duckdb_s3_config.Rd
 50f744f6f23dea604e011fe383bf9108 *man/figures/README-unnamed-chunk-10-1.png
 77bc60fecfe0764c3dd5912dab304861 *man/figures/README-unnamed-chunk-8-1.png
-ac1ee359fef00097534ff92bf944a3fe *man/load_spatial.Rd
+5f725eb0f4c9f5bbb85079d1468a2013 *man/load_spatial.Rd
 347f100e8669d99687b411145c016920 *man/open_dataset.Rd
 5fb47763fa686a460e99d42d7bb64ffa *man/spatial_join.Rd
 330d7c3ed7f144af855987bbb03f4c79 *man/st_read_meta.Rd
