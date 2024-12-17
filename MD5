@@ -1,9 +1,9 @@
-58343988405719df754ec3d491e61b09 *DESCRIPTION
+ad1c79839fbff5f1c2cab560fdf6583e *DESCRIPTION
 fcf115aa5029a37c172bf572245a5e91 *LICENSE
 e585ae9fafdfa8944e0f42c490640003 *NAMESPACE
-5ffff9b35211f277568cf87d0d3c71fa *NEWS.md
+56b912f13c58be658244e5dfd81cfa1f *NEWS.md
 625caa9271bee2b7a8385478f483323a *R/cached_connection.R
-1b4d5399facfb0ccc8eba732cefb001d *R/duckdb_config.R
+9d8aee6eff986325b7f92744fc4b211d *R/duckdb_config.R
 3d592a2f09931ed56fb777f83b795870 *R/open_dataset.R
 77b09dca3333cfd78d97922c029273c5 *R/parse_uri.R
 b5f4798fcdd51110fcaf1da686bc7ddc *R/spatial_join.R
@@ -11,7 +11,7 @@ ef2f3c207ac0873db2db4cfe3553408b *R/st_read_meta.R
 6bee287c623308e6cb26b3a57615f999 *R/to_sf.R
 48a7b06995b61ee8df453e97b3f4425f *R/utils.R
 5686932536b234ed244963bab9605cb4 *R/write_dataset.R
-3c55a51d021cc918f86f72faad82d34d *README.md
+67a169b2f9421d93f18411cb17a4aae7 *README.md
 ae684b63414fc5f0584f3e5db70a70e9 *inst/WORDLIST
 05fad66f8e774ae30e8384d73ee6fef2 *inst/examples/more-spatial.R
 d17e848caf8e63663230cd5fbc9f81ff *inst/examples/neon-read-remote-csv.R
@@ -30,7 +30,7 @@ bbf57ef4492f4862d61c42e7555a00d0 *man/close_connection.Rd
 61749e72a25a2e1360a8a11f42dc894b *man/duckdb_s3_config.Rd
 50f744f6f23dea604e011fe383bf9108 *man/figures/README-unnamed-chunk-10-1.png
 77bc60fecfe0764c3dd5912dab304861 *man/figures/README-unnamed-chunk-8-1.png
-5f725eb0f4c9f5bbb85079d1468a2013 *man/load_spatial.Rd
+9d59ca070c9d21126aaa6aa3a44a6d80 *man/load_spatial.Rd
 347f100e8669d99687b411145c016920 *man/open_dataset.Rd
 5fb47763fa686a460e99d42d7bb64ffa *man/spatial_join.Rd
 330d7c3ed7f144af855987bbb03f4c79 *man/st_read_meta.Rd
@@ -38,6 +38,7 @@ f6884093e0bb1d4708ee4e1324f1d5d4 *man/to_sf.Rd
 d26f5b7081df65a4073826a623bf4167 *man/write_dataset.Rd
 0622a97a2aaa3c342f09636052c2d7f5 *tests/spelling.R
 5027c6ff4a96a56b0713436027889080 *tests/testthat.R
+a5e2ec68c4a023a6bf9b982c8bee9760 *tests/testthat/test-load_extension.R
 80a88c4334fb58941c786350742bbe6b *tests/testthat/test-open_dataset.R
 bea2d6d29b39dd1b9e71a4fef250ca8a *tests/testthat/test-s3_uri.R
 b5864284fd6d6846b4a0cf85ef341073 *tests/testthat/test-spatial.R

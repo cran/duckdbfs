@@ -1,7 +1,7 @@
 Package: duckdbfs
 Title: High Performance Remote File System, Database and 'Geospatial'
         Access Using 'duckdb'
-Version: 0.0.8
+Version: 0.0.9
 Authors@R: 
   c(person("Carl", "Boettiger", , "cboettig@gmail.com", c("aut", "cre"),
          comment = c(ORCID = "0000-0002-1642-628X")), 
@@ -23,9 +23,9 @@ Suggests: curl, sf, jsonlite, spelling, minioclient, testthat (>=
 Config/testthat/edition: 3
 Language: en-US
 NeedsCompilation: no
-Packaged: 2024-12-09 04:29:54 UTC; jovyan
+Packaged: 2024-12-16 23:24:38 UTC; jovyan
 Author: Carl Boettiger [aut, cre] (<https://orcid.org/0000-0002-1642-628X>),
   Michael D. Sumner [ctb] (<https://orcid.org/0000-0002-2471-7511>)
 Maintainer: Carl Boettiger <cboettig@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-12-09 06:00:05 UTC
+Date/Publication: 2024-12-17 00:00:02 UTC
