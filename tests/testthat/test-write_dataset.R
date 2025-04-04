@@ -50,7 +50,7 @@ test_that("write_dataset partitions", {
   expect_true(any(grepl("cyl=4", parts)))
 
   path <- file.path(tempdir(), "mtcars2")
-  mtcars |> write_dataset(path, partitioning = "cyl", overwrite=FALSE)
+  mtcars |> write_dataset(path, partitioning = "cyl", overwrite=TRUE)
   expect_true(file.exists(path))
   df <- open_dataset(path)
   expect_s3_class(df, "tbl")
@@ -89,19 +89,16 @@ test_that("write_dataset to s3:", {
   config <- jsonlite::fromJSON(p$stdout)
 
   minioclient::mc_mb("play/duckdbfs")
+
+  duckdb_secrets(config$accessKey, config$secretKey, gsub("https://", "", config$URL))
+
   mtcars |> dplyr::group_by(cyl, gear) |>
-  write_dataset(
-                "s3://duckdbfs/mtcars.parquet",
-                s3_access_key_id = config$accessKey,
-                s3_secret_access_key = config$secretKey,
-                s3_endpoint = config$URL,
-                s3_use_ssl=TRUE,
-                s3_url_style="path"
-                )
+  write_dataset("s3://duckdbfs/mtcars.parquet")
 
   expect_true(TRUE)
   minioclient::mc("rb --force play/duckdbfs")
 
+  close_connection()
 })
 
 mc_config_get <- function(alias="play"){
@@ -118,5 +115,29 @@ mc_config_get <- function(alias="play"){
   config$URL <- config$url
   config
 }
+
+
+
+
+
+
+test_that("write_geo", {
+
+  skip_on_cran()
+  skip_if_not_installed("sf")
+
+  ## write from an on-disk dataset
+  local_file <-  system.file("extdata/spatial-test.csv", package="duckdbfs")
+  load_spatial()
+  tbl <- open_dataset(local_file, format='csv')
+  path <- file.path(tempdir(), "spatial.geojson")
+  write_geo(tbl, path)
+
+  expect_true(file.exists(path))
+  df <- sf::st_read(path)
+  expect_s3_class(df, "sf")
+
+})
+
 
 
