@@ -2,10 +2,15 @@
 % Please edit documentation in R/write_dataset.R
 \name{write_geo}
 \alias{write_geo}
-\title{Write H3 hexagon data out as an h3j-compliant JSON file
-NOTE: the column containing H3 hashes must be named \code{hexid}}
+\title{Write a spatial file with gdal}
 \usage{
-write_geo(dataset, path, conn = cached_connection())
+write_geo(
+  dataset,
+  path,
+  conn = cached_connection(),
+  driver = "GeoJSON",
+  layer_creation_options = "WRITE_BBOX=YES"
+)
 }
 \arguments{
 \item{dataset}{a remote tbl object from \code{open_dataset},
@@ -14,13 +19,24 @@ or an in-memory data.frame.}
 \item{path}{a local file path or S3 path with write credentials}
 
 \item{conn}{duckdbfs database connection}
+
+\item{driver}{driver, see \url{https://duckdb.org/docs/stable/extensions/spatial/gdal}}
+
+\item{layer_creation_options}{to GDAL, see \url{https://duckdb.org/docs/stable/extensions/spatial/gdal}}
 }
 \description{
-Write H3 hexagon data out as an h3j-compliant JSON file
-NOTE: the column containing H3 hashes must be named \code{hexid}
+Write a spatial file with gdal
+}
+\details{
+NOTE: at this time, duckdb's pre-packaged GDAL does not support s3 writes,
+and will produce a "Error: Not implemented Error: GDAL Error (6): Seek not supported on writable /vsis3/ files".
+Use to_geojson() instead.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# example code
+local_file <-  system.file("extdata/spatial-test.csv", package="duckdbfs")
+load_spatial()
+tbl <- open_dataset(local_file, format='csv')
+write_geo(tbl, "spatial.geojson")
 \dontshow{\}) # examplesIf}
 }

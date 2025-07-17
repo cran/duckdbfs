@@ -2,6 +2,7 @@
 % Please edit documentation in R/cached_connection.R
 \name{cached_connection}
 \alias{cached_connection}
+\alias{duckdb_connect}
 \title{create a cachable duckdb connection}
 \usage{
 cached_connection(
@@ -9,7 +10,9 @@ cached_connection(
   read_only = FALSE,
   bigint = "numeric",
   config = list(temp_directory = tempfile()),
-  autoload_exts = getOption("duckdbfs_autoload_extensions", TRUE)
+  autoload_exts = getOption("duckdbfs_autoload_extensions", TRUE),
+  with_spatial = getOption("duckdbfs_autoload_extensions", TRUE),
+  with_h3 = not_windows() && getOption("duckdbfs_autoload_extensions", TRUE)
 )
 }
 \arguments{
@@ -33,6 +36,13 @@ Subsequent connections will silently ignore these flags.}
 
 \item{autoload_exts}{should we auto-load extensions?  TRUE by default,
 can be configured with \code{options(duckdbfs_autoload_extensions = FALSE)}}
+
+\item{with_spatial}{install (if missing) and load spatial extension, default TRUE.
+Opt out by closing any active cached connection first (with
+\code{close_connection()}) and re-instantiating the with
+\code{connect(with_spatial = FALSE)}.}
+
+\item{with_h3}{install (if missing) and load  the h3 spatial index extension.}
 }
 \value{
 a \code{\link[duckdb:duckdb]{duckdb::duckdb()}} connection object
@@ -63,8 +73,9 @@ However, some operations require additional working space, so by default
 we set a temporary storage location in configuration as well.
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 con <- cached_connection()
 close_connection(con)
-
+\dontshow{\}) # examplesIf}
 }
